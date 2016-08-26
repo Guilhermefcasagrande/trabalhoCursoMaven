@@ -1,3 +1,10 @@
+<%-- 
+    Document   : 404
+    Created on : 26/08/2016, 19:52:49
+    Author     : Guilherme
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,3 +46,4 @@
 
     </body>
 </html>
+
