@@ -40,7 +40,7 @@
 
         <div class="container">
 
-            <form class="login-form" action="index.html">        
+            <form class="login-form" action="index.jsp">        
                 <div class="login-wrap">
                     <p class="login-img"><i class="icon_lock_alt"></i></p>
                     <div class="input-group">
