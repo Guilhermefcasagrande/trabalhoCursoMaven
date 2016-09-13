@@ -14,9 +14,6 @@
         <meta name="author" content="GeeksLabs">
         <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
         <link rel="shortcut icon" href="img/favicon.png">
-
-        <title>Planejamento Estratégico Institucional</title>
-
         <!-- Bootstrap CSS -->    
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- bootstrap theme -->
@@ -63,7 +60,22 @@
                             <li><a class="" href="form_component.jsp">Form Elements</a></li>                          
                             <li><a class="" href="form_validation.jsp">Form Validation</a></li>
                         </ul>
-                    </li>       
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Cadastros</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="perspectiva.jsp">Perspectivas</a></li>                          
+                            <li><a class="" href="objetivo.jsp">Objetivos</a></li>
+                            <li><a class="" href="indicador.jsp">Indicadores</a></li>
+                            <li><a class="" href="periodo.jsp">Período</a></li>
+                            <li><a class="" href="local.jsp">Local</a></li>
+                            <li><a class="" href="dimensoes.jsp">Dimensões/Eixo</a></li>
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_desktop"></i>

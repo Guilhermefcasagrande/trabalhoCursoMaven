@@ -1,6 +1,6 @@
 <%-- 
-    Document   : blank
-    Created on : 26/08/2016, 19:54:34
+    Document   : dimensoes
+    Created on : 12/09/2016, 20:57:22
     Author     : Guilherme
 --%>
 
@@ -15,7 +15,7 @@
         <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
         <link rel="shortcut icon" href="img/favicon.png">
 
-        <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
+        <title>Dimensoes/Eixos</title>
 
         <!-- Bootstrap CSS -->    
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,4 +73,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
