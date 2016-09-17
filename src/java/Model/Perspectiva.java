@@ -14,11 +14,6 @@ public class Perspectiva {
     private int prsCodigo;
     private String descricao;
 
-    public Perspectiva(int prsCodigo, String descricao) {
-        this.prsCodigo = prsCodigo;
-        this.descricao = descricao;
-    }
-
     public int getPrsCodigo() {
         return prsCodigo;
     }
