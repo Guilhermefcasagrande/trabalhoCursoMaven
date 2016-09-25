@@ -57,7 +57,32 @@
                         </div>
                     </div>
                     <!-- page start-->
-                    Page content goes here
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cadastrar Local
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form" action="AdicionaLocalServlet" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="descricao" class="form-control" id="inputEmail1" placeholder="Descrição">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Tipo</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="tipo" class="form-control" id="inputEmail1" placeholder="Tipo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <input type="submit" class="btn btn-info" value="Cadastrar"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
                     <!-- page end-->
                 </section>
             </section>

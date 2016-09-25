@@ -68,6 +68,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
+                            <li><a class="" href="avi.jsp">Avi</a></li>
                             <li><a class="" href="perspectiva.jsp">Perspectivas</a></li>                          
                             <li><a class="" href="objetivo.jsp">Objetivos</a></li>
                             <li><a class="" href="indicador.jsp">Indicadores</a></li>

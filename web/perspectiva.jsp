@@ -29,14 +29,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/style-responsive.css" rel="stylesheet" />
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-          <script src="js/lte-ie7.js"></script>
-        <![endif]-->
     </head>
-
     <body>
         <jsp:include page="/header.jsp" />
         <jsp:include page="/menuLateral.jsp" />
@@ -48,7 +41,7 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                            <h3 class="page-header"><i class="fa fa fa-bars"></i> Perspectivas</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
                                 <li><i class="fa fa-bars"></i>Pages</li>
@@ -56,9 +49,28 @@
                             </ol>
                         </div>
                     </div>
-                    <!-- page start-->
-                    Page content goes here
-                    <!-- page end-->
+                    <!-- início-->
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cadastrar Perspectiva
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form" action="AdicionaPerspectivaServlet" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="descricao" class="form-control" id="inputEmail1" placeholder="Descrição">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <input type="submit" class="btn btn-info" value="Cadastrar"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- fim-->
                 </section>
             </section>
             <!--main content end-->

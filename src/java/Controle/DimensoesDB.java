@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Controle;
 
 import Conexao.ConexaoElephant;
-import Conexao.ConexaoPostgres;
-import Model.Perspectiva;
+import Modelo.Dimensoes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,20 +15,21 @@ import java.sql.SQLException;
  *
  * @author Guilherme
  */
-public class InserePerspectiva {
+public class DimensoesDB {
+    
     private Connection connection;
     
-    public InserePerspectiva(){
+    public DimensoesDB(){
         this.connection = new ConexaoElephant().getConnection();
     }
     
-    public void adiciona(Perspectiva persp){
-        String sql = "insert into pespectiva (descricao) values (?);";
-        
+    public void adiciona(Dimensoes dim) {
+        String sql = "insert into dimensoeseixo (descricao) values (?);";
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, persp.getDescricao());
-            
+            stmt.setString(1, dim.getDescricao());
+
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {

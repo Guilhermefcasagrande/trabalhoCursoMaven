@@ -6,6 +6,7 @@
 package Testes;
 
 import Conexao.ConexaoPostgres;
+import Conexao.ConexaoElephant;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class Testes {
     public static void main(String[] args) throws SQLException {
         
-        Connection con = new ConexaoPostgres().getConnection();
+        Connection con = new ConexaoElephant().getConnection();
         con.close();
     }
 }

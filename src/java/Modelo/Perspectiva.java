@@ -3,28 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
  * @author Guilherme
  */
-public class Periodo {
-
-    private int perAno;
+public class Perspectiva {
+    
+    private int prsCodigo;
     private String descricao;
 
-    public Periodo(int perAno, String descricao) {
-        this.perAno = perAno;
-        this.descricao = descricao;
+    public int getPrsCodigo() {
+        return prsCodigo;
     }
 
-    public int getPerAno() {
-        return perAno;
-    }
-
-    public void setPerAno(int perAno) {
-        this.perAno = perAno;
+    public void setPrsCodigo(int prsCodigo) {
+        this.prsCodigo = prsCodigo;
     }
 
     public String getDescricao() {
@@ -34,6 +29,7 @@ public class Periodo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
     
     
 }

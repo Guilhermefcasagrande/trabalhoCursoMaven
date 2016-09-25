@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
@@ -14,13 +14,6 @@ public class Avi {
     private int aviCodigo;
     private String instrumento;
     private String descricao;
-
-    public Avi(int aviCodigo, String instrumento, String descricao) {
-        this.aviCodigo = aviCodigo;
-        this.instrumento = instrumento;
-        this.descricao = descricao;
-    }
-
     
     public int getAviCodigo() {
         return aviCodigo;

@@ -5,8 +5,8 @@
  */
 package Testes;
 
-import Control.InserePerspectiva;
-import Model.Perspectiva;
+import Controle.PerspectivaDB;
+import Modelo.Perspectiva;
 
 /**
  *
@@ -18,7 +18,7 @@ public class TestaInserePerspectiva {
         
         persp.setDescricao("TEste");
         
-        InserePerspectiva ins = new InserePerspectiva();
+        PerspectivaDB ins = new PerspectivaDB();
         ins.adiciona(persp);
         
         System.out.println("Inserido com sucesso");

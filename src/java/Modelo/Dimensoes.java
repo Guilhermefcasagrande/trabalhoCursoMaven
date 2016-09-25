@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
@@ -29,10 +29,4 @@ public class Dimensoes {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public Dimensoes(int dimCodigo, String descricao) {
-        this.dimCodigo = dimCodigo;
-        this.descricao = descricao;
-    }
- 
 }

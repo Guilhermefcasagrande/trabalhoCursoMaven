@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Modelo;
 
 /**
  *
@@ -14,12 +14,6 @@ public class Local {
     private int locCodigo;
     private String descricao;
     private String tipo;
-
-    public Local(int locCodigo, String descricao, String tipo) {
-        this.locCodigo = locCodigo;
-        this.descricao = descricao;
-        this.tipo = tipo;
-    }
 
     public int getLocCodigo() {
         return locCodigo;
