@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input type="submit" class="btn btn-info" value="Cadastrar"/>
+                                        <input type="submit" class="btn btn-info" value="Cadastrar" id="cadastrar"/>
                                     </div>
                                 </div>
                             </form>
@@ -75,10 +75,12 @@
             </section>
             <!--main content end-->
         </section>
-        <!-- container section end -->
+
         <!-- javascripts -->
         <script src="js/jquery.js"></script>
+        <script src="js/funcoes.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-1.8.3.min.js"></script>
         <!-- nice scroll -->    
         <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
         <script src="js/scripts.js"></script>
