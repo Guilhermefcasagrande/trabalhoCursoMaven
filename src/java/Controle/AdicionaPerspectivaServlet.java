@@ -8,6 +8,7 @@ package Controle;
 import Modelo.Perspectiva;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,12 +32,12 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
         // monta um objeto perspectiva
         Perspectiva perspectiva = new Perspectiva();
         perspectiva.setDescricao(descricao);
-        
+
         // insere a perpectiva
         PerspectivaDB ins = new PerspectivaDB();
         ins.adiciona(perspectiva);
 
-        System.out.println("Inserido");
+        RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
+        red.forward(request, response);
     }
-
 }
