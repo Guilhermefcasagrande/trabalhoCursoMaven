@@ -37,7 +37,30 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
         PerspectivaDB ins = new PerspectivaDB();
         ins.adiciona(perspectiva);
 
-        RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
-        red.forward(request, response);
+        //RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
+        //red.forward(request, response);
     }
+    /*protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //response.setContentType("text/html;charset=UTF-8");
+        try {
+            // busca o writer
+            PrintWriter out = response.getWriter();
+
+            // buscando os parâmetros no request
+            String descricao = request.getParameter("descricao");
+
+            // monta um objeto perspectiva
+            Perspectiva perspectiva = new Perspectiva();
+            perspectiva.setDescricao(descricao);
+
+            // insere a perpectiva
+            PerspectivaDB ins = new PerspectivaDB();
+            ins.adiciona(perspectiva);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            System.out.println("nada aconteceu");
+        }
+    }*/
 }
