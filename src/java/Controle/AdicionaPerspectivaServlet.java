@@ -23,9 +23,7 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
-
+        
         // buscando os parâmetros no request
         String descricao = request.getParameter("descricao");
 
@@ -33,34 +31,15 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
         Perspectiva perspectiva = new Perspectiva();
         perspectiva.setDescricao(descricao);
 
-        // insere a perpectiva
+        // insere a perspectiva
         PerspectivaDB ins = new PerspectivaDB();
         ins.adiciona(perspectiva);
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Perspectiva cadastrada com sucesso");
 
         //RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
         //red.forward(request, response);
     }
-    /*protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //response.setContentType("text/html;charset=UTF-8");
-        try {
-            // busca o writer
-            PrintWriter out = response.getWriter();
-
-            // buscando os parâmetros no request
-            String descricao = request.getParameter("descricao");
-
-            // monta um objeto perspectiva
-            Perspectiva perspectiva = new Perspectiva();
-            perspectiva.setDescricao(descricao);
-
-            // insere a perpectiva
-            PerspectivaDB ins = new PerspectivaDB();
-            ins.adiciona(perspectiva);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            System.out.println("nada aconteceu");
-        }
-    }*/
 }

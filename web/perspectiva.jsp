@@ -57,7 +57,7 @@
                         </header>
                         <div class="panel-body">
                             <!--<form class="form-horizontal" role="form" action="AdicionaPerspectivaServlet" method="post">-->
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" id="form">
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
                                     <div class="col-lg-10">
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <button class="btn btn-info" id="cadastrar" onclick="cadastraPerspectiva()">Cadastrar</button>
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
                                     </div>
                                 </div>
                             </form>
@@ -80,67 +80,24 @@
 
         <!-- javascripts -->
         <script type="text/javascript">
-            //Função para enviar requisições HTTP
-            function initXHR() {
-                // criando xhr de acordo com o browser
-                if (window.XMLHttpRequest) { // Nao microsoft
-                    xhr = new XMLHttpRequest();
-                } else if (window.ActiveXObject) {
-                    xhr = new ActiveXObject("Microsoft.XMLHttp");
-                }
-            }
-            //Este codigo e o initXHR sempre serão os mesmo. Não há necessidade de criar outro
-            function sendRequest(url, handler) {
-                initXHR();
-                // setando método de resposta no xhr
-                xhr.onreadystatechange = handler;
-                // abrindo requisição
-                xhr.open("GET", url, true);
-                // executando xhr
-                xhr.send(null);
-            }
-            //Função será executada ao Clicar no botão Salvar. A função pega os valores digitados e envia para Servlet
-            /*function cadastraPerspectiva() {
-             var descricao = document.getElementById("id_descricao");
-             //alert(descricao.value);
-             //Variável que passará os valores via Ajax para o servlet
-             //var url = "AdicionaPerspectivaServlet?descricao=" + descricao.value + ";
-             //Envia a varivável e chama proxima função para verificar a resposta do Servlet
-             sendRequest(url, ajaxCadastro);
-             }*/
-
-            function cadastraPerspectiva() {
-                //var descricao = document.getElementById("id_descricao");
+            $("#cadastrar").click(function () {
                 $.ajax({
                     url: "AdicionaPerspectivaServlet",
                     type: "POST",
                     data: {
-                        descricao: document.getElementById("id_descricao")
+                        "descricao": $('#id_descricao').val()
                     },
-                    //dataType: "json",
                     error: function () {
-                        alert("ERRO")
+                        alert("Não foi possível cadastrar a Perspectiva. Contate o Administrador do sistema.");
                     },
                     success: function (responseText) {
-                        alert("show");
+                        alert(responseText);
+                        $('#form').each(function () {
+                            this.reset();
+                        });
                     }
                 });
-
-            }
-            //Retorno do Servlet indicando se está tudo Ok.
-            function ajaxCadastro() {
-                if (xhr.readyState == 4) { // requisicao concluida
-                    // status da resposta 200 = OK, (404 página não encontrada, 500 erro no servidor)
-                    if (xhr.status == 200) {
-                        alert("show");
-                        // setando valores de resposta do servlet no meu div
-                        var resposta = document.getElementById("sucess");
-                        //Definindo um texto que será exibido se cadastro foi feito com sucesso.
-                        resposta.innerHTML = "Perspectiva cadastrada cadastrado com sucesso!";
-                    }
-                }
-            }
-
+            });
         </script>
         <script src="js/jquery.js"></script>
         <script src="js/funcoes.js"></script>

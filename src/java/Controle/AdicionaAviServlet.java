@@ -22,8 +22,6 @@ public class AdicionaAviServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
 
         // buscando os parâmetros no request
         String instrumento = request.getParameter("instrumento");
@@ -38,7 +36,9 @@ public class AdicionaAviServlet extends HttpServlet {
         AviDB ins = new AviDB();
         ins.adiciona(avi);
 
-        System.out.println("Inserido");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Avaliação cadastrada com sucesso.");
     }
 
 }

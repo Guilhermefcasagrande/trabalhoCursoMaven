@@ -23,7 +23,7 @@
     
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
-        <url-pattern>/AdicionaPerspectivaServlet</url-pattern>
+        <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdicionaLocalServlet</servlet-name>
