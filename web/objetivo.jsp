@@ -51,13 +51,44 @@
                             <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
-                                <li><i class="fa fa-bars"></i>Pages</li>
-                                <li><i class="fa fa-square-o"></i>Pages</li>
+                                <li><i class="fa fa-bars"></i>Cadasrtos</li>
+                                <li><i class="fa fa-square-o"></i>Objetivos</li>
                             </ol>
                         </div>
                     </div>
                     <!-- page start-->
-                    Page content goes here
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cadastrar Objetivo
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form" id="form">
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Perspectiva</label>
+                                    <div class="col-lg-10">
+                                        <select class="form-control m-bot15" id="id_perspectiva">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
                     <!-- page end-->
                 </section>
             </section>

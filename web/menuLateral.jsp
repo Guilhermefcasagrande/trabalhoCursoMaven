@@ -50,7 +50,7 @@
                             <span>Página Inicial</span>
                         </a>
                     </li>
-                    <li class="sub-menu">
+                    <!--<li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
                             <span>Forms</span>
@@ -60,7 +60,7 @@
                             <li><a class="" href="form_component.jsp">Form Elements</a></li>                          
                             <li><a class="" href="form_validation.jsp">Form Validation</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
@@ -78,6 +78,22 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Planos de Ação</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="avi.jsp">Avi</a></li>
+                            <li><a class="" href="perspectiva.jsp">Perspectivas</a></li>                          
+                            <li><a class="" href="objetivo.jsp">Objetivos</a></li>
+                            <li><a class="" href="indicador.jsp">Indicadores</a></li>
+                            <li><a class="" href="periodo.jsp">Período</a></li>
+                            <li><a class="" href="local.jsp">Local</a></li>
+                            <li><a class="" href="dimensoes.jsp">Dimensões/Eixo</a></li>
+                        </ul>
+                    </li>
+                    <!--<li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_desktop"></i>
                             <span>UI Fitures</span>
@@ -127,7 +143,7 @@
                             <li><a class="" href="blank.jsp">Blank Page</a></li>
                             <li><a class="" href="404.jsp">404 Error</a></li>
                         </ul>
-                    </li>
+                    </li>-->
 
                 </ul>
                 <!-- sidebar menu end-->

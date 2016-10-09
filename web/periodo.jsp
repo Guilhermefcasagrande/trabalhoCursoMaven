@@ -51,27 +51,27 @@
                             <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
-                                <li><i class="fa fa-bars"></i>Pages</li>
-                                <li><i class="fa fa-square-o"></i>Pages</li>
+                                <li><i class="fa fa-bars"></i>Cadastros</li>
+                                <li><i class="fa fa-square-o"></i>Períodos</li>
                             </ol>
                         </div>
                     </div>
                     <!-- page start-->
                     <section class="panel">
                         <header class="panel-heading">
-                            Cadastrar Perspectiva
+                            Cadastrar Período
                         </header>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="AdicionaPeriodoServlet" method="post">
+                            <form class="form-horizontal" role="form" id="form">
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="descricao" class="form-control" id="inputEmail1" placeholder="Descrição">
+                                        <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input type="submit" class="btn btn-info" value="Cadastrar"/>
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
                                     </div>
                                 </div>
                             </form>
@@ -84,6 +84,26 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
+        <script type="text/javascript">
+            $("#cadastrar").click(function () {
+                $.ajax({
+                    url: "AdicionaPeriodoServlet",
+                    type: "POST",
+                    data: {
+                        "descricao": $('#id_descricao').val()
+                    },
+                    error: function () {
+                        alert("Não foi possível cadastrar o Período. Contate o Administrador do sistema.");
+                    },
+                    success: function (responseText) {
+                        alert(responseText);
+                        $('#form').each(function () {
+                            this.reset();
+                        });
+                    }
+                });
+            });
+        </script>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->

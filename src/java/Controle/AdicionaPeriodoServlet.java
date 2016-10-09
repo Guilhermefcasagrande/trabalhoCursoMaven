@@ -7,7 +7,6 @@ package Controle;
 
 import Modelo.Periodo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,21 +21,20 @@ public class AdicionaPeriodoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
-
         // buscando os parâmetros no request
         String descricao = request.getParameter("descricao");
 
         // monta um objeto perspectiva
-        Periodo per = new Periodo();
-        per.setDescricao(descricao);
-        
-        // insere a perpectiva
-        PeriodoDB ins = new PeriodoDB();
-        ins.adiciona(per);
+        Periodo periodo = new Periodo();
+        periodo.setDescricao(descricao);
 
-        System.out.println("Inserido");
+        // insere a perspectiva
+        PeriodoDB ins = new PeriodoDB();
+        ins.adiciona(periodo);
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Periodo cadastrado com sucesso");
     }
 
 }
