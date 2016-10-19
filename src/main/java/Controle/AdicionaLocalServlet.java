@@ -22,8 +22,6 @@ public class AdicionaLocalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
 
         // buscando os parâmetros no request
         String descricao = request.getParameter("descricao");
@@ -38,7 +36,9 @@ public class AdicionaLocalServlet extends HttpServlet {
         LocalDB ins = new LocalDB();
         ins.adiciona(loc);
 
-        System.out.println("Inserido");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Local cadastrado com sucesso.");
 
     }
 

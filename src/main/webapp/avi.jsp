@@ -28,13 +28,6 @@
         <!-- Custom styles -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/style-responsive.css" rel="stylesheet" />
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-          <script src="js/lte-ie7.js"></script>
-        <![endif]-->
     </head>
 
     <body>
@@ -51,33 +44,33 @@
                             <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
-                                <li><i class="fa fa-bars"></i>Pages</li>
-                                <li><i class="fa fa-square-o"></i>Pages</li>
+                                <li><i class="fa fa-bars"></i>Cadastros</li>
+                                <li><i class="fa fa-square-o"></i>AVI</li>
                             </ol>
                         </div>
                     </div>
                     <!-- page start-->
                     <section class="panel">
                         <header class="panel-heading">
-                            Cadastrar Local
+                            Cadastrar Avaliação
                         </header>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="AdicionaAviServlet" method="post">
+                            <form class="form-horizontal" role="form" id="form">
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Instrumento</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="instrumento" class="form-control" id="inputEmail1" placeholder="Instrumento">
+                                        <input type="text" name="instrumento" class="form-control" id="id_instrumento" placeholder="Instrumento">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="descricao" class="form-control" id="inputEmail1" placeholder="Descrição">
+                                        <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input type="submit" class="btn btn-info" value="Cadastrar"/>
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
                                     </div>
                                 </div>
                             </form>
@@ -90,6 +83,29 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
+
+        <script type="text/javascript">
+            $("#cadastrar").click(function () {
+                $.ajax({
+                    url: "AdicionaAviServlet",
+                    type: "POST",
+                    data: {
+                        "instrumento": $('#id_instrumento').val(),
+                        "descricao": $('#id_descricao').val()
+                    },
+                    error: function () {
+                        alert("Não foi possível cadastrar a Avaliação. Contate o Administrador do sistema.");
+                    },
+                    success: function (responseText) {
+                        alert(responseText);
+                        $('#form').each(function () {
+                            this.reset();
+                        });
+                    }
+                });
+            });
+        </script>
+
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->

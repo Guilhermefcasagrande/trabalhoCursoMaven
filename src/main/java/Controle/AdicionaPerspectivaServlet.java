@@ -23,9 +23,7 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
-
+        
         // buscando os parâmetros no request
         String descricao = request.getParameter("descricao");
 
@@ -33,11 +31,15 @@ public class AdicionaPerspectivaServlet extends HttpServlet {
         Perspectiva perspectiva = new Perspectiva();
         perspectiva.setDescricao(descricao);
 
-        // insere a perpectiva
+        // insere a perspectiva
         PerspectivaDB ins = new PerspectivaDB();
         ins.adiciona(perspectiva);
 
-        RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
-        red.forward(request, response);
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Perspectiva cadastrada com sucesso");
+
+        //RequestDispatcher red = request.getRequestDispatcher("perspectiva.jsp");
+        //red.forward(request, response);
     }
 }

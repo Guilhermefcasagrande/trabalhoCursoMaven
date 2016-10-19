@@ -22,9 +22,6 @@ public class AdicionaDimServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // busca o writer
-        PrintWriter out = response.getWriter();
-
         // buscando os parâmetros no request
         String descricao = request.getParameter("descricao");
 
@@ -32,11 +29,13 @@ public class AdicionaDimServlet extends HttpServlet {
         Dimensoes dim = new Dimensoes();
         dim.setDescricao(descricao);
 
-        // insere a perpectiva
+        // insere a perspectiva
         DimensoesDB ins = new DimensoesDB();
         ins.adiciona(dim);
 
-        System.out.println("Inserido");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("Dimensão cadastrada com sucesso!");
     }
 
 }

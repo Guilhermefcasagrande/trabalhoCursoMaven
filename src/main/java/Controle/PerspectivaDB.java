@@ -29,6 +29,7 @@ public class PerspectivaDB {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, persp.getDescricao());
+            
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
