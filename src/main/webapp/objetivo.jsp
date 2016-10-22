@@ -28,13 +28,6 @@
         <!-- Custom styles -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/style-responsive.css" rel="stylesheet" />
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-          <script src="js/lte-ie7.js"></script>
-        <![endif]-->
     </head>
 
     <body>
@@ -48,10 +41,10 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                            <h3 class="page-header"><i class="fa fa fa-bars"></i> Objetivos</h3>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
-                                <li><i class="fa fa-bars"></i>Cadasrtos</li>
+                                <li><i class="fa fa-home"></i><a href="index.jsp">Página Inicial</a></li>
+                                <li><i class="fa fa-bars"></i>Cadastros</li>
                                 <li><i class="fa fa-square-o"></i>Objetivos</li>
                             </ol>
                         </div>
