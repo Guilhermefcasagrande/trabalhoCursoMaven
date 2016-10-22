@@ -62,16 +62,11 @@
                                         <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Perspectiva</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control m-bot15" id="id_perspectiva">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                        <input type="text" name="perspectiva" class="form-control" id="id_perspectiva" placeholder="Perspectiva">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -89,6 +84,28 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
+
+        <script type="text/javascript">
+            $("#cadastrar").click(function () {
+                $.ajax({
+                    url: "AdicionaObjetivoServlet",
+                    type: "POST",
+                    data: {
+                        "descricao": $('#id_descricao').val(),
+                        "prs_codigo": $('#id_perspectiva').val()
+                    },
+                    error: function () {
+                        alert("Não foi possível cadastrar o Objetivo. Contate o Administrador do sistema.");
+                    },
+                    success: function (responseText) {
+                        alert(responseText);
+                        $('#form').each(function () {
+                            this.reset();
+                        });
+                    }
+                });
+            });
+        </script>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->

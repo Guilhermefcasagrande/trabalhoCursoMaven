@@ -6,8 +6,7 @@
 package Controle;
 
 import Conexao.ConexaoElephant;
-import Conexao.ConexaoPostgres;
-import Modelo.Perspectiva;
+import Modelo.Objetivo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,18 +15,19 @@ import java.sql.SQLException;
  *
  * @author Guilherme
  */
-public class PerspectivaDB {
-    private Connection connection;
-    private String sqlInsere = "insert into pespectiva (descricao) values (?);";
+public class ObjetivoDB {
+     private Connection connection;
+    private String sqlInsere = "insert into objetivo (descricao,prs_codigo) values (?,?);";
     
-    public PerspectivaDB(){
+    public ObjetivoDB(){
         this.connection = new ConexaoElephant().getConnection();
     }
     
-    public void adiciona(Perspectiva persp){
+    public void adiciona(Objetivo obj){
         try {
             PreparedStatement stmt = connection.prepareStatement(sqlInsere);
-            stmt.setString(1, persp.getDescricao());
+            stmt.setString(1, obj.getDescricao());
+            stmt.setInt(2, obj.getPrsCodigo());
             
             stmt.execute();
             stmt.close();
