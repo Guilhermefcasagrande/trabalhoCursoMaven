@@ -18,16 +18,15 @@ import java.sql.SQLException;
 public class AviDB {
     
     private Connection connection;
+    private String sqlInsere = "insert into avi (instrumento,descricao) values (?,?);";
     
     public AviDB(){
         this.connection = new ConexaoElephant().getConnection();
     }
     
     public void adiciona(Avi avi) {
-        String sql = "insert into avi (instrumento,descricao) values (?,?);";
-
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sqlInsere);
             stmt.setString(1, avi.getInstrumento());
             stmt.setString(2, avi.getDescricao());
 

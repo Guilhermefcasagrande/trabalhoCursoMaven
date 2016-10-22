@@ -18,16 +18,15 @@ import java.sql.SQLException;
 public class LocalDB {
 
     private Connection connection;
+    private String sqlInsere = "insert into local (descricao,tipo) values (?,?);";
 
     public LocalDB() {
         this.connection = new ConexaoElephant().getConnection();
     }
 
     public void adiciona(Local loc) {
-        String sql = "insert into local (descricao,tipo) values (?,?);";
-
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sqlInsere);
             stmt.setString(1, loc.getDescricao());
             stmt.setString(2, loc.getTipo());
 
