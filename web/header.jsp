@@ -44,9 +44,6 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span>
                             <span class="username">Admin Unidavi</span>
                             <b class="caret"></b>
                         </a>
