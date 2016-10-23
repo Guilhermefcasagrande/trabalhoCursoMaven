@@ -18,16 +18,16 @@ import java.sql.SQLException;
 public class DimensoesDB {
     
     private Connection connection;
+    private String sqlInsere = "insert into dimensoeseixo (descricao) values (?);";
     
     public DimensoesDB(){
         this.connection = new ConexaoElephant().getConnection();
     }
     
     public void adiciona(Dimensoes dim) {
-        String sql = "insert into dimensoeseixo (descricao) values (?);";
 
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sqlInsere);
             stmt.setString(1, dim.getDescricao());
 
             stmt.execute();

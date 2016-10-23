@@ -18,16 +18,15 @@ import java.sql.SQLException;
 public class PeriodoDB {
 
     private Connection connection;
+    private String sqlInsere = "insert into periodo (descricao) values (?);";
 
     public PeriodoDB() {
         this.connection = new ConexaoElephant().getConnection();
     }
 
     public void adiciona(Periodo per) {
-        String sql = "insert into periodo (descricao) values (?);";
-
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sqlInsere);
             stmt.setString(1, per.getDescricao());
 
             stmt.execute();

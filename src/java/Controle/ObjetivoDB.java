@@ -6,7 +6,7 @@
 package Controle;
 
 import Conexao.ConexaoElephant;
-import Modelo.Local;
+import Modelo.Objetivo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,21 +15,20 @@ import java.sql.SQLException;
  *
  * @author Guilherme
  */
-public class LocalDB {
+public class ObjetivoDB {
 
     private Connection connection;
-    private String sqlInsere = "insert into local (descricao,tipo) values (?,?);";
+    private String sqlInsere = "insert into objetivo (descricao,prs_codigo) values (?,?);";
 
-    public LocalDB() {
+    public ObjetivoDB() {
         this.connection = new ConexaoElephant().getConnection();
     }
 
-    public void adiciona(Local loc) {
-
+    public void adiciona(Objetivo obj) {
         try {
             PreparedStatement stmt = connection.prepareStatement(sqlInsere);
-            stmt.setString(1, loc.getDescricao());
-            stmt.setString(2, loc.getTipo());
+            stmt.setString(1, obj.getDescricao());
+            stmt.setInt(2, obj.getPrsCodigo());
 
             stmt.execute();
             stmt.close();
