@@ -50,7 +50,40 @@
                         </div>
                     </div>
                     <!-- page start-->
-                    Page content goes here
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cadastrar Indicador
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form" id="form">
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Situação</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="situação" class="form-control" id="id_situação" placeholder="Situação">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Objetivo</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="objetivo" class="form-control" id="id_objetivo" placeholder="Situação">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
                     <!-- page end-->
                 </section>
             </section>
@@ -58,6 +91,30 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
+
+        <script type="text/javascript">
+            $("#cadastrar").click(function () {
+                $.ajax({
+                    url: "AdicionaIndicadorServlet",
+                    type: "POST",
+                    data: {
+                        "descricao": $('#id_descricao').val(),
+                        "situacao": $('#id_situação').val(),
+                        "objetivo": $('#id_objetivo').val()
+                    },
+                    error: function () {
+                        alert("Não foi possível cadastrar o Objetivo. Contate o Administrador do sistema.");
+                    },
+                    success: function (responseText) {
+                        alert(responseText);
+                        $('#form').each(function () {
+                            this.reset();
+                        });
+                    }
+                });
+            });
+        </script>
+
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->

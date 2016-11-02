@@ -24,6 +24,10 @@
         <servlet-name>AdicionaObjetivoServlet</servlet-name>
         <servlet-class>Controle.AdicionaObjetivoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdicionaIndicadorServlet</servlet-name>
+        <servlet-class>Controle.AdicionaIndicadorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>AdicionaObjetivoServlet</servlet-name>
         <url-pattern>/AdicionaObjetivoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaIndicadorServlet</servlet-name>
+        <url-pattern>/AdicionaIndicadorServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
