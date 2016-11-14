@@ -81,7 +81,16 @@
                                 </header>
 
                                 <table class="table table-striped table-advance table-hover" id="listaPersp">
-                                    <!-- Conteúdo-->
+                                    <thead>
+                                        <tr>
+                                            <th><i class="icon_profile"></i> Código</th>
+                                            <th><i class="icon_calendar"></i> Descrição</th>
+                                            <th><i class="icon_calendar"></i> Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Resultado-->
+                                    </tbody>
                                 </table>
                             </section>
                         </div>
@@ -120,16 +129,32 @@
                     type: "POST",
                     dataType: "json",
                     error: function () {
-                        alert("Não foi possível cadastrar a Perspectiva. Contate o Administrador do sistema.");
+                        alert("Erro de Listagem");
                     },
-                    success: function (data) {
-                       for(var i = 0; i <= data.length; i++){
-                           var persp = data[i];
-                           alert(persp.nome);
-                       }
+                    success: function (responseJson) {
+                        var teste = document.getElementById('result');
+                        var itens = "";
+                        for (var key in responseJson) {
+                            if (responseJson.hasOwnProperty(key)) {
+
+                                itens += "<tr>";
+                                itens += "<td>" + responseJson[key].prsCodigo + "</td>";
+                                itens += "<td>" + responseJson[key].descricao + "</td>";
+                                itens += "<td>";
+                                itens += "<div class=\"btn-group\">";
+                                itens += "<a class=\"btn btn-primary\" href=\"#\"><i class=\"icon_plus_alt2\"></i></a>";
+                                itens += "<a class=\"btn btn-danger\" href=\"#\"><i class=\"icon_close_alt2\"></i></a>";
+                                itens += "</div>";
+                                itens += "</td>";
+                                itens += "</tr>";
+
+                            }
+                        }
+                        $("#result").html(itens);
                     }
                 });
             });
+
         </script>
         <script src="js/jquery.js"></script>
         <script src="js/funcoes.js"></script>
