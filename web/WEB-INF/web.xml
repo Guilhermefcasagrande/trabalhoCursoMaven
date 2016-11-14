@@ -28,6 +28,14 @@
         <servlet-name>AdicionaIndicadorServlet</servlet-name>
         <servlet-class>Controle.AdicionaIndicadorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListaPerspectivaServlet</servlet-name>
+        <servlet-class>Controle.ListaPerspectivaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionaIndPerServlet</servlet-name>
+        <servlet-class>Controle.AdicionaIndPerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>AdicionaIndicadorServlet</servlet-name>
         <url-pattern>/AdicionaIndicadorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaPerspectivaServlet</servlet-name>
+        <url-pattern>/ListaPerspectivaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaIndPerServlet</servlet-name>
+        <url-pattern>/AdicionaIndPerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

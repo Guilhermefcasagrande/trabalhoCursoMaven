@@ -72,6 +72,20 @@
                             </form>
                         </div>
                     </section>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Listagem de Perspectivas
+                                </header>
+
+                                <table class="table table-striped table-advance table-hover" id="listaPersp">
+                                    <!-- Conteúdo-->
+                                </table>
+                            </section>
+                        </div>
+                    </div>
                     <!-- fim-->
                 </section>
             </section>
@@ -95,6 +109,24 @@
                         $('#form').each(function () {
                             this.reset();
                         });
+                    }
+                });
+            });
+
+            $(document).ready(function () {
+
+                $.ajax({
+                    url: "ListaPerspectivaServlet",
+                    type: "POST",
+                    dataType: "json",
+                    error: function () {
+                        alert("Não foi possível cadastrar a Perspectiva. Contate o Administrador do sistema.");
+                    },
+                    success: function (data) {
+                       for(var i = 0; i <= data.length; i++){
+                           var persp = data[i];
+                           alert(persp.nome);
+                       }
                     }
                 });
             });

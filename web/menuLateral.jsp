@@ -72,6 +72,7 @@
                             <li><a class="" href="perspectiva.jsp">Perspectivas</a></li>                          
                             <li><a class="" href="objetivo.jsp">Objetivos</a></li>
                             <li><a class="" href="indicador.jsp">Indicadores</a></li>
+                            <li><a class="" href="indicadorPeriodo.jsp">Indicadores por Período</a></li>
                             <li><a class="" href="periodo.jsp">Período</a></li>
                             <li><a class="" href="local.jsp">Local</a></li>
                             <!--<li><a class="" href="dimensoes.jsp">Dimensões/Eixo</a></li>-->
