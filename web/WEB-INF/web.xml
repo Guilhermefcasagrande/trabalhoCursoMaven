@@ -36,6 +36,10 @@
         <servlet-name>AdicionaIndPerServlet</servlet-name>
         <servlet-class>Controle.AdicionaIndPerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdicionaPlanoAcaoServlet</servlet-name>
+        <servlet-class>Controle.AdicionaPlanoAcaoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>AdicionaIndPerServlet</servlet-name>
         <url-pattern>/AdicionaIndPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaPlanoAcaoServlet</servlet-name>
+        <url-pattern>/AdicionaPlanoAcaoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
