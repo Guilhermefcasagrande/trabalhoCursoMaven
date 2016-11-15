@@ -6,6 +6,7 @@
 package Controle;
 
 import Conexao.ConexaoElephant;
+import Conexao.ConexaoPostgres;
 import Modelo.IndPer;
 import Modelo.PlanoAcao;
 import java.sql.Connection;
@@ -19,15 +20,18 @@ import java.sql.SQLException;
 public class PlanoAcaoDB {
 
     private Connection connection;
-    private String sqlInsere = "insert into plano_acao (ind_sequencia,obj_codigo,per_ano,loc_codigo,descricao,meta,prazo,situacao) values (?,?,?,?,?,?,?,?);";
-    
-    public PlanoAcaoDB(){
-        this.connection = new ConexaoElephant().getConnection();
+    private static String sqlInsere = "insert into plano_acao (ind_sequencia,obj_codigo,per_ano,loc_codigo,descricao,meta,prazo,situacao) values (?,?,?,?,?,?,?,?);";
+
+    public PlanoAcaoDB() {
+        //this.connection = new ConexaoElephant().getConnection();
+        this.connection = new ConexaoPostgres().getConnection();
     }
-    
-    public void adiciona(PlanoAcao plan) {
+
+    public static boolean adiciona(PlanoAcao plan) {
+        boolean inseriu = false;
         try {
-            PreparedStatement stmt = connection.prepareStatement(sqlInsere);
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement stmt = conexao.prepareStatement(sqlInsere);
             stmt.setInt(1, plan.getIndSequencia());
             stmt.setInt(2, plan.getObjCodigo());
             stmt.setInt(3, plan.getPerAno());
@@ -37,10 +41,15 @@ public class PlanoAcaoDB {
             stmt.setString(7, plan.getPrazo());
             stmt.setString(8, plan.getSituacao());
 
-            stmt.execute();
-            stmt.close();
+            int valor = stmt.executeUpdate();
+            if (valor == 1) {
+                inseriu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
         } catch (SQLException e) {
             System.out.println("Erro de sql:" + e.getMessage());
+        } finally{
+            return inseriu;
         }
     }
 }

@@ -21,7 +21,7 @@ public class AdicionaIndPerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+
         // buscando os parâmetros no request
         int ind_sequencia = Integer.parseInt(request.getParameter("indicador"));
         int obj_codigo = Integer.parseInt(request.getParameter("objetivo"));
@@ -38,14 +38,18 @@ public class AdicionaIndPerServlet extends HttpServlet {
         indper.setMeta(meta);
         indper.setValor(valor);
         indper.setDescricao(descricao);
-        
-        // insere o indicador
-        IndicadorPerDB ins = new IndicadorPerDB();
-        ins.adiciona(indper);
 
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Indicador cadastrado com sucesso!");
-    
+        // insere o indicador
+        boolean inseriu = IndicadorPerDB.adiciona(indper);
+
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Indicador cadastrado com sucesso!");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao cadastrar o indicador");
+        }
     }
 }

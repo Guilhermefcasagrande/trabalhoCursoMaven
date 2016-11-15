@@ -28,7 +28,8 @@ public class PerspectivaDB {
     private static String sqlExclui = "delete from pespectiva where prs_codigo = ?;";
 
     public PerspectivaDB() {
-        this.connection = new ConexaoElephant().getConnection();
+        //this.connection = new ConexaoElephant().getConnection();
+        this.connection = new ConexaoPostgres().getConnection();
     }
 
     public void adiciona(Perspectiva persp) {
@@ -46,7 +47,8 @@ public class PerspectivaDB {
     public static ArrayList<Perspectiva> listaPerspectiva() {
         ArrayList<Perspectiva> lista = new ArrayList<Perspectiva>();
         try {
-            Connection conexao = ConexaoElephant.getConnection();
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
             Statement stm = conexao.createStatement();
             ResultSet rs = stm.executeQuery(sqlLista);
 
@@ -60,7 +62,7 @@ public class PerspectivaDB {
                 
                 lista.add(persp);
             }
-            ConexaoElephant.fechaConexao(conexao);
+            ConexaoPostgres.fechaConexao(conexao);
         } catch (SQLException e) {
             System.out.println("Erro de sql: " + e.getMessage());
         } finally {
@@ -72,14 +74,15 @@ public class PerspectivaDB {
         boolean excluiu = false;
 
         try {
-            Connection conexao = ConexaoElephant.getConnection();
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
             PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
             pstmt.setInt(1, persp.getPrsCodigo());
             int valor = pstmt.executeUpdate();
             if (valor == 1) {
                 excluiu = true;
             }
-            ConexaoElephant.fechaConexao(conexao);
+            ConexaoPostgres.fechaConexao(conexao);
         } catch (SQLException erro) {
             System.out.println("Erro de SQL " + erro.getMessage());
         } finally {

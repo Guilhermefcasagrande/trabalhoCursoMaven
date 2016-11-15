@@ -29,12 +29,17 @@ public class AdicionaPeriodoServlet extends HttpServlet {
         periodo.setDescricao(descricao);
 
         // insere a perspectiva
-        PeriodoDB ins = new PeriodoDB();
-        ins.adiciona(periodo);
+        boolean inseriu = PeriodoDB.adiciona(periodo);
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Periodo cadastrado com sucesso");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao cadastrar o periodo");
+        }
 
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Periodo cadastrado com sucesso");
     }
 
 }

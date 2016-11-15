@@ -42,14 +42,17 @@ public class AdicionaPlanoAcaoServlet extends HttpServlet {
         plan.setMeta(meta);
         plan.setPrazo(prazo);
         plan.setSituacao(situacao);
-        
+
         // insere o indicador
-        PlanoAcaoDB ins = new PlanoAcaoDB();
-        ins.adiciona(plan);
-
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Plano de Ação cadastrado com sucesso!");
-
+        boolean inseriu = PlanoAcaoDB.adiciona(plan);
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Plano de Ação cadastrado com sucesso!");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao cadastrar o plano de ação");
+        }
     }
 }

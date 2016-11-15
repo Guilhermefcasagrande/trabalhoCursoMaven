@@ -6,6 +6,7 @@
 package Controle;
 
 import Conexao.ConexaoElephant;
+import Conexao.ConexaoPostgres;
 import Modelo.Dimensoes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,8 @@ public class DimensoesDB {
     private String sqlInsere = "insert into dimensoeseixo (descricao) values (?);";
     
     public DimensoesDB(){
-        this.connection = new ConexaoElephant().getConnection();
+        //this.connection = new ConexaoElephant().getConnection();
+        this.connection = new ConexaoPostgres().getConnection();
     }
     
     public void adiciona(Dimensoes dim) {

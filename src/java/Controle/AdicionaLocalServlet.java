@@ -33,13 +33,15 @@ public class AdicionaLocalServlet extends HttpServlet {
         loc.setTipo(tipo);
 
         // insere a perpectiva
-        LocalDB ins = new LocalDB();
-        ins.adiciona(loc);
-
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Local cadastrado com sucesso.");
-
+        boolean inseriu = LocalDB.adiciona(loc);
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Local cadastrado com sucesso.");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao Cadastrar o local");
+        }
     }
-
 }

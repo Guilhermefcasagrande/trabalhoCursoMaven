@@ -6,6 +6,7 @@
 package Controle;
 
 import Conexao.ConexaoElephant;
+import Conexao.ConexaoPostgres;
 import Modelo.Avi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,8 @@ public class AviDB {
     private Connection connection;
     private String sqlInsere = "insert into avi (instrumento,descricao) values (?,?);";
     public AviDB(){
-        this.connection = new ConexaoElephant().getConnection();
+        //this.connection = new ConexaoElephant().getConnection();
+        this.connection = new ConexaoPostgres().getConnection();
     }
     
     public void adiciona(Avi avi) {

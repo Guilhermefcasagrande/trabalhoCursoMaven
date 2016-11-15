@@ -34,12 +34,17 @@ public class AdicionaIndicadorServlet extends HttpServlet {
         indicador.setObjCodigo(obj_codigo);
 
         // insere o indicador
-        IndicadorDB ins = new IndicadorDB();
-        ins.adiciona(indicador);
+        boolean inseriu = IndicadorDB.adiciona(indicador);
 
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Indicador cadastrado com sucesso!");
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Indicador cadastrado com sucesso!");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao cadastrar o indicador");
+        }
 
     }
 }

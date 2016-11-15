@@ -32,12 +32,17 @@ public class AdicionaObjetivoServlet extends HttpServlet {
         objetivo.setPrsCodigo(prs_codigo);
 
         // insere o objetivo
-        ObjetivoDB ins = new ObjetivoDB();
-        ins.adiciona(objetivo);
+        boolean inseriu = ObjetivoDB.adiciona(objetivo);
+        if (inseriu) {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Objetivo cadastrado com sucesso!");
+        } else {
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Erro ao cadastrar o objetivo!");
+        }
 
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Objetivo cadastrado com sucesso!");
     }
 
 }

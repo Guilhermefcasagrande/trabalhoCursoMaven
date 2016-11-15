@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input class="btn btn-info" id="cadastrarPersp" type="button" value="Cadastrar"/>
+                                        <input class="btn btn-info" id="cadastrarPersp" type="button" value="Cadastrar" onclick="lista()"/>
                                     </div>
                                 </div>
                             </form>
