@@ -48,6 +48,38 @@
         <servlet-name>AlteraPerspServlet</servlet-name>
         <servlet-class>Controle.AlteraPerspServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListaObjetivoServlet</servlet-name>
+        <servlet-class>Controle.ListaObjetivoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluiObjServlet</servlet-name>
+        <servlet-class>Controle.ExcluiObjServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraObjetivoServlet</servlet-name>
+        <servlet-class>Controle.AlteraObjetivoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaIndicadorServlet</servlet-name>
+        <servlet-class>Controle.ListaIndicadorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaPeriodoServlet</servlet-name>
+        <servlet-class>Controle.ListaPeriodoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaLocalServlet</servlet-name>
+        <servlet-class>Controle.ListaLocalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaIndPerServlet</servlet-name>
+        <servlet-class>Controle.ListaIndPerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaPlnAcaoServlet</servlet-name>
+        <servlet-class>Controle.ListaPlnAcaoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -95,6 +127,38 @@
     <servlet-mapping>
         <servlet-name>AlteraPerspServlet</servlet-name>
         <url-pattern>/AlteraPerspServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaObjetivoServlet</servlet-name>
+        <url-pattern>/ListaObjetivoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiObjServlet</servlet-name>
+        <url-pattern>/ExcluiObjServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraObjetivoServlet</servlet-name>
+        <url-pattern>/AlteraObjetivoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaIndicadorServlet</servlet-name>
+        <url-pattern>/ListaIndicadorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaPeriodoServlet</servlet-name>
+        <url-pattern>/ListaPeriodoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaLocalServlet</servlet-name>
+        <url-pattern>/ListaLocalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaIndPerServlet</servlet-name>
+        <url-pattern>/ListaIndPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaPlnAcaoServlet</servlet-name>
+        <url-pattern>/ListaPlnAcaoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

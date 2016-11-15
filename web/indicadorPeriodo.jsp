@@ -76,36 +76,63 @@
                                         <input type="text" name="periodo" class="form-control" id="id_periodo" placeholder="Período">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Meta</label>
                                     <div class="col-lg-10">
                                         <input type="text" name="meta" class="form-control" id="id_meta" placeholder="Meta">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Valor</label>
                                     <div class="col-lg-10">
                                         <input type="text" name="valor" class="form-control" id="id_valor" placeholder="Valor">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
                                     <div class="col-lg-10">
                                         <input type="text" name="descricao" class="form-control" id="id_descricao" placeholder="Descrição">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" onclick="lista()"/>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </section>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Listagem de Objetivos
+                                </header>
+
+                                <table class="table table-striped table-advance table-hover" id="listaPersp">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="icon_profile"></i> Indicador</th>
+                                            <th><i class="icon_calendar"></i> Objetivo</th>
+                                            <th><i class="icon_calendar"></i> Período</th>
+                                            <th><i class="icon_calendar"></i> Meta</th>
+                                            <th><i class="icon_calendar"></i> Valor</th>
+                                            <th><i class="icon_calendar"></i> Descrição</th>
+                                            <th><i class="icon_calendar"></i> Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Resultado-->
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
                     <!-- page end-->
                 </section>
             </section>
@@ -113,34 +140,8 @@
         </section>
         <!-- container section end -->
         <!-- javascripts -->
-
-        <script type="text/javascript">
-            $("#cadastrar").click(function () {
-                $.ajax({
-                    url: "AdicionaIndPerServlet",
-                    type: "POST",
-                    data: {
-                        "indicador": $('#id_indicador').val(),
-                        "objetivo": $('#id_objetivo').val(),
-                        "periodo": $('#id_periodo').val(),
-                        "meta": $('#id_meta').val(),
-                        "valor": $('#id_valor').val(),
-                        "descricao": $('#id_descricao').val()
-                    },
-                    error: function () {
-                        alert("Não foi possível cadastrar o Indicador por Período. Contate o Administrador do sistema.");
-                    },
-                    success: function (responseText) {
-                        alert(responseText);
-                        $('#form').each(function () {
-                            this.reset();
-                        });
-                    }
-                });
-            });
-        </script>
-
         <script src="js/jquery.js"></script>
+        <script src="js/funcoesIndPer.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->
         <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->

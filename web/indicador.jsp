@@ -78,12 +78,37 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
+                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" onclick="lista()"/>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </section>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Listagem de Objetivos
+                                </header>
+
+                                <table class="table table-striped table-advance table-hover" id="listaPersp">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="icon_profile"></i> Código</th>
+                                            <th><i class="icon_calendar"></i> Descrição</th>
+                                            <th><i class="icon_calendar"></i> Objetivo</th>
+                                            <th><i class="icon_calendar"></i> Situação</th>
+                                            <th><i class="icon_calendar"></i> Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Resultado-->
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
                     <!-- page end-->
                 </section>
             </section>
@@ -92,30 +117,8 @@
         <!-- container section end -->
         <!-- javascripts -->
 
-        <script type="text/javascript">
-            $("#cadastrar").click(function () {
-                $.ajax({
-                    url: "AdicionaIndicadorServlet",
-                    type: "POST",
-                    data: {
-                        "descricao": $('#id_descricao').val(),
-                        "situacao": $('#id_situação').val(),
-                        "objetivo": $('#id_objetivo').val()
-                    },
-                    error: function () {
-                        alert("Não foi possível cadastrar o Objetivo. Contate o Administrador do sistema.");
-                    },
-                    success: function (responseText) {
-                        alert(responseText);
-                        $('#form').each(function () {
-                            this.reset();
-                        });
-                    }
-                });
-            });
-        </script>
-
         <script src="js/jquery.js"></script>
+        <script src="js/funcoesIndicador.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!-- nice scroll -->
         <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->

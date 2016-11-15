@@ -121,6 +121,36 @@
                             </form>
                         </div>
                     </section>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Listagem de Objetivos
+                                </header>
+
+                                <table class="table table-striped table-advance table-hover" id="listaPersp">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="icon_profile"></i> Plano</th>
+                                            <th><i class="icon_calendar"></i> Local</th>
+                                            <th><i class="icon_calendar"></i> Indicador</th>
+                                            <th><i class="icon_calendar"></i> Objetivo</th>
+                                            <th><i class="icon_calendar"></i> Período</th>
+                                            <th><i class="icon_calendar"></i> Descrição</th>
+                                            <th><i class="icon_calendar"></i> Meta</th>
+                                            <th><i class="icon_calendar"></i> Prazo</th>
+                                            <th><i class="icon_calendar"></i> Situação</th>
+                                            <th><i class="icon_calendar"></i> Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Resultado-->
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
                     <!-- fim-->
                 </section>
             </section>
@@ -128,35 +158,8 @@
         </section>
 
         <!-- javascripts -->
-        <script type="text/javascript">
-            $("#cadastrar").click(function () {
-                $.ajax({
-                    url: "AdicionaPlanoAcaoServlet",
-                    type: "POST",
-                    data: {
-                        "indicador": $('#id_indicador').val(),
-                        "objetivo": $('#id_objetivo').val(),
-                        "periodo": $('#id_periodo').val(),
-                        "local": $('#id_local').val(),
-                        "meta": $('#id_meta').val(),
-                        "prazo": $('#id_prazo').val(),
-                        "situacao": $('#id_situacao').val(),
-                        "descricao": $('#id_descricao').val()
-                    },
-                    error: function () {
-                        alert("Não foi possível cadastrar o Plano de Ação. Contate o Administrador do sistema.");
-                    },
-                    success: function (responseText) {
-                        alert(responseText);
-                        $('#form').each(function () {
-                            this.reset();
-                        });
-                    }
-                });
-            });
-        </script>
         <script src="js/jquery.js"></script>
-        <script src="js/funcoes.js"></script>
+        <script src="js/funcoesPlanoAcao.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery-1.8.3.min.js"></script>
         <!-- nice scroll -->    
