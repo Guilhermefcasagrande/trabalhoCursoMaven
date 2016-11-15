@@ -44,6 +44,10 @@
         <servlet-name>ExcluiPerspServlet</servlet-name>
         <servlet-class>Controle.ExcluiPerspServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlteraPerspServlet</servlet-name>
+        <servlet-class>Controle.AlteraPerspServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ExcluiPerspServlet</servlet-name>
         <url-pattern>/ExcluiPerspServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraPerspServlet</servlet-name>
+        <url-pattern>/AlteraPerspServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

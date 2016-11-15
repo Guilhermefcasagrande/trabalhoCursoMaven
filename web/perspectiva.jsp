@@ -102,10 +102,7 @@
         </section>
 
         <!-- javascripts -->
-        <script type="text/javascript">
 
-
-        </script>
         <script src="js/jquery.js"></script>
         <script src="js/funcoes.js"></script>
         <script src="js/bootstrap.min.js"></script>

@@ -23,9 +23,10 @@ import java.util.ArrayList;
 public class PerspectivaDB {
 
     private Connection connection;
-    private static String sqlLista = "select * from pespectiva";
+    private static String sqlLista = "select * from pespectiva order by prs_codigo";
     private static String sqlInsere = "insert into pespectiva (descricao) values (?);";
     private static String sqlExclui = "delete from pespectiva where prs_codigo = ?;";
+    private static String sqlAltera = "update pespectiva set descricao = ? where prs_codigo = ?";
 
     public PerspectivaDB() {
         //this.connection = new ConexaoElephant().getConnection();
@@ -55,11 +56,11 @@ public class PerspectivaDB {
             while (rs.next()) {
                 int codigo = rs.getInt("prs_codigo");
                 String descricao = rs.getString("descricao");
-                
+
                 Perspectiva persp = new Perspectiva();
                 persp.setDescricao(descricao);
                 persp.setPrsCodigo(codigo);
-                
+
                 lista.add(persp);
             }
             ConexaoPostgres.fechaConexao(conexao);
@@ -69,7 +70,7 @@ public class PerspectivaDB {
             return lista;
         }
     }
-    
+
     public static boolean excluiPerspectiva(Perspectiva persp) {
         boolean excluiu = false;
 
@@ -88,5 +89,28 @@ public class PerspectivaDB {
         } finally {
             return excluiu;
         }
+    }
+
+    public static boolean alteraPerspectiva(Perspectiva persp) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setString(1, persp.getDescricao());
+            pstmt.setInt(2, persp.getPrsCodigo());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
+        }
+
     }
 }

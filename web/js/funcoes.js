@@ -80,7 +80,7 @@ function lista() {
                     itens += "<td>" + responseJson[key].descricao + "</td>";
                     itens += "<td>";
                     itens += "<div class=\"btn-group\">";
-                    itens += "<a class=\"btn btn-primary\" href=\"#\" onclick=\"lista();\"><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-primary\" href=\"alteraPerspectiva.jsp?codigo=" + responseJson[key].prsCodigo + "&descricao=" + responseJson[key].descricao + "\" ><i class=\"icon_plus_alt2\"></i></a>";
                     itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].prsCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
                     itens += "</div>";
                     itens += "</td>";
@@ -105,6 +105,23 @@ function exclui(codigo) {
         success: function (responseText) {
             alert(responseText);
             lista();
+        }
+    });
+}
+function alterarPersp(codigo, desc) {
+    $.ajax({
+        url: "AlteraPerspServlet",
+        type: "POST",
+        data: {
+            "codigo": codigo,
+            "descricao": desc
+        },
+        error: function () {
+            alert("Não foi possível alterar a Perspectiva. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            window.location.href = "./perspectiva.jsp";
         }
     });
 }
