@@ -40,6 +40,10 @@
         <servlet-name>AdicionaPlanoAcaoServlet</servlet-name>
         <servlet-class>Controle.AdicionaPlanoAcaoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluiPerspServlet</servlet-name>
+        <servlet-class>Controle.ExcluiPerspServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>AdicionaPlanoAcaoServlet</servlet-name>
         <url-pattern>/AdicionaPlanoAcaoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiPerspServlet</servlet-name>
+        <url-pattern>/ExcluiPerspServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

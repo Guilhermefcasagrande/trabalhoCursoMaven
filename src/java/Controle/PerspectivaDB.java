@@ -25,6 +25,7 @@ public class PerspectivaDB {
     private Connection connection;
     private static String sqlLista = "select * from pespectiva";
     private static String sqlInsere = "insert into pespectiva (descricao) values (?);";
+    private static String sqlExclui = "delete from pespectiva where prs_codigo = ?;";
 
     public PerspectivaDB() {
         this.connection = new ConexaoElephant().getConnection();
@@ -60,11 +61,29 @@ public class PerspectivaDB {
                 lista.add(persp);
             }
             ConexaoElephant.fechaConexao(conexao);
-            System.out.println(lista);
         } catch (SQLException e) {
             System.out.println("Erro de sql: " + e.getMessage());
         } finally {
             return lista;
+        }
+    }
+    
+    public static boolean excluiPerspectiva(Perspectiva persp) {
+        boolean excluiu = false;
+
+        try {
+            Connection conexao = ConexaoElephant.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, persp.getPrsCodigo());
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoElephant.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
         }
     }
 }

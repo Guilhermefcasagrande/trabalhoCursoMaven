@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <input class="btn btn-info" id="cadastrar" type="button" value="Cadastrar" />
+                                        <input class="btn btn-info" id="cadastrarPersp" type="button" value="Cadastrar"/>
                                     </div>
                                 </div>
                             </form>
@@ -103,57 +103,7 @@
 
         <!-- javascripts -->
         <script type="text/javascript">
-            $("#cadastrar").click(function () {
-                $.ajax({
-                    url: "AdicionaPerspectivaServlet",
-                    type: "POST",
-                    data: {
-                        "descricao": $('#id_descricao').val()
-                    },
-                    error: function () {
-                        alert("Não foi possível cadastrar a Perspectiva. Contate o Administrador do sistema.");
-                    },
-                    success: function (responseText) {
-                        alert(responseText);
-                        $('#form').each(function () {
-                            this.reset();
-                        });
-                    }
-                });
-            });
 
-            $(document).ready(function () {
-
-                $.ajax({
-                    url: "ListaPerspectivaServlet",
-                    type: "POST",
-                    dataType: "json",
-                    error: function () {
-                        alert("Erro de Listagem");
-                    },
-                    success: function (responseJson) {
-                        var teste = document.getElementById('result');
-                        var itens = "";
-                        for (var key in responseJson) {
-                            if (responseJson.hasOwnProperty(key)) {
-
-                                itens += "<tr>";
-                                itens += "<td>" + responseJson[key].prsCodigo + "</td>";
-                                itens += "<td>" + responseJson[key].descricao + "</td>";
-                                itens += "<td>";
-                                itens += "<div class=\"btn-group\">";
-                                itens += "<a class=\"btn btn-primary\" href=\"#\"><i class=\"icon_plus_alt2\"></i></a>";
-                                itens += "<a class=\"btn btn-danger\" href=\"#\"><i class=\"icon_close_alt2\"></i></a>";
-                                itens += "</div>";
-                                itens += "</td>";
-                                itens += "</tr>";
-
-                            }
-                        }
-                        $("#result").html(itens);
-                    }
-                });
-            });
 
         </script>
         <script src="js/jquery.js"></script>

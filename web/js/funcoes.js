@@ -12,7 +12,7 @@ $(document).ready(function () {
         // habilitando o campo 
         $('#id_descricao_acao').prop("disabled", false);
     });
-    
+
     $("#disable_meta").click(function () {
         // desabilitando o campo 
         $('#id_descricao_meta').attr("disabled", true);
@@ -21,7 +21,7 @@ $(document).ready(function () {
         // habilitando o campo 
         $('#id_descricao_meta').prop("disabled", false);
     });
-    
+
     $("#disable_indicador").click(function () {
         // desabilitando o campo 
         $('#id_descricao_indicador').attr("disabled", true);
@@ -30,7 +30,7 @@ $(document).ready(function () {
         // habilitando o campo 
         $('#id_descricao_indicador').prop("disabled", false);
     });
-    
+
     $("#disable_prazo").click(function () {
         // desabilitando o campo 
         $('#id_descricao_prazo').attr("disabled", true);
@@ -39,5 +39,74 @@ $(document).ready(function () {
         // habilitando o campo 
         $('#id_descricao_prazo').prop("disabled", false);
     });
+
+
+    $("#cadastrarPersp").click(function () {
+        $.ajax({
+            url: "AdicionaPerspectivaServlet",
+            type: "POST",
+            data: {
+                "descricao": $('#id_descricao').val()
+            },
+            error: function () {
+                alert("Não foi possível cadastrar a Perspectiva. Contate o Administrador do sistema.");
+            },
+            success: function (responseText) {
+                alert(responseText);
+                $('#form').each(function () {
+                    this.reset();
+                });
+            }
+        });
+    });
 });
 
+function lista() {
+    $.ajax({
+        url: "ListaPerspectivaServlet",
+        type: "POST",
+        dataType: "json",
+        error: function () {
+            alert("Erro de Listagem");
+        },
+        success: function (responseJson) {
+            var teste = document.getElementById('result');
+            var itens = "";
+            for (var key in responseJson) {
+                if (responseJson.hasOwnProperty(key)) {
+
+                    itens += "<tr>";
+                    itens += "<td>" + responseJson[key].prsCodigo + "</td>";
+                    itens += "<td>" + responseJson[key].descricao + "</td>";
+                    itens += "<td>";
+                    itens += "<div class=\"btn-group\">";
+                    itens += "<a class=\"btn btn-primary\" href=\"#\" onclick=\"lista();\"><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].prsCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
+                    itens += "</div>";
+                    itens += "</td>";
+                    itens += "</tr>";
+
+                }
+            }
+            $("#result").html(itens);
+        }
+    });
+}
+function exclui(codigo) {
+    $.ajax({
+        url: "ExcluiPerspServlet",
+        type: "POST",
+        data: {
+            "codigo": codigo
+        },
+        error: function () {
+            alert("Não foi possível excluir a Perspectiva. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            lista();
+        }
+    });
+}
+
+window.onload = lista();

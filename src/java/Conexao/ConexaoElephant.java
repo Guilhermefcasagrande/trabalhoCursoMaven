@@ -44,6 +44,7 @@ public class ConexaoElephant {
         if (conexao != null) {
             try {
                 conexao.close();
+                System.out.println("Conexão fechada");
             } catch (SQLException erro) {
                 System.out.println("Erro ao fechar Conexao");
             }
