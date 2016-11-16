@@ -32,7 +32,7 @@ $(document).ready(function () {
 
 function lista() {
     $.ajax({
-        url: "ListaPlnAcaoServlet",
+        url: "ListaMedServlet",
         type: "POST",
         dataType: "json",
         error: function () {
@@ -50,15 +50,14 @@ function lista() {
                     itens += "<td>" + responseJson[key].indSequencia + "</td>";
                     itens += "<td>" + responseJson[key].objCodigo + "</td>";
                     itens += "<td>" + responseJson[key].perAno + "</td>";
+                    itens += "<td>" + responseJson[key].valor + "</td>";
                     itens += "<td>" + responseJson[key].descricao + "</td>";
-                    itens += "<td>" + responseJson[key].meta + "</td>";
-                    itens += "<td>" + responseJson[key].prazo + "</td>";
-                    itens += "<td>" + responseJson[key].situacao + "</td>";
                     itens += "<td>";
                     itens += "<div class=\"btn-group\">";
-                    itens += "<a class=\"btn btn-primary\" href=\"alteraPlanoAc.jsp?local=" + responseJson[key].locCodigo + "&descricao=" + responseJson[key].descricao + "&meta=" + responseJson[key].meta +
-                            "&prazo=" + responseJson[key].prazo + "&situacao=" + responseJson[key].situacao + "&plano=" + responseJson[key].plnSequencia + "\" ><i class=\"icon_plus_alt2\"></i></a>";
-                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].plnSequencia + ");\"><i class=\"icon_close_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-primary\" href=\"alteraMedicao.jsp?plano=" + responseJson[key].plnSequencia + "&local=" + responseJson[key].locCodigo + "&indicador=" + responseJson[key].indSequencia +
+                            "&objetivo=" + responseJson[key].objCodigo + "&periodo=" + responseJson[key].perAno + "&valor=" + responseJson[key].valor + "&descricao="+responseJson[key].descricao+"\" ><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].plnSequencia + "," + responseJson[key].locCodigo + "," + responseJson[key].indSequencia +
+                            "," + responseJson[key].objCodigo + "," + responseJson[key].perAno + ");\"><i class=\"icon_close_alt2\"></i></a>";
                     itens += "</div>";
                     itens += "</td>";
                     itens += "</tr>";
@@ -70,15 +69,19 @@ function lista() {
     });
 }
 
-function exclui(plano) {
+function exclui(plano, local, indicador, objetivo, periodo) {
     $.ajax({
-        url: "ExcluiPlanAcServlet",
+        url: "ExcluiMedServlet",
         type: "POST",
         data: {
-            "planoAcao": plano
+            "planoAcao": plano,
+            "local": local,
+            "indicador": indicador,
+            "objetivo": objetivo,
+            "periodo": periodo
         },
         error: function () {
-            alert("Não foi possível excluir o Plano de Ação. Contate o Administrador do sistema.");
+            alert("Não foi possível excluir o Acompanhamento. Contate o Administrador do sistema.");
         },
         success: function (responseText) {
             alert(responseText);
@@ -87,24 +90,25 @@ function exclui(plano) {
     });
 }
 
-function alteraPlanoAc(local, descricao, meta, prazo, situacao, plano) {
+function alteraAcomp(plano, local, indicador, objetivo, periodo, valor, descricao) {
     $.ajax({
-        url: "AlteraPlanoAcServlet",
+        url: "AlteraMedServlet",
         type: "POST",
         data: {
+            "plano": plano,
             "local": local,
-            "descricao": descricao,
-            "meta": meta,
-            "prazo": prazo,
-            "situacao": situacao,
-            "plano": plano
+            "indicador": indicador,
+            "objetivo": objetivo,
+            "periodo": periodo,
+            "valor": valor,
+            "descricao": descricao
         },
         error: function () {
             alert("Não foi possível alterar o Plano de Ação. Contate o Administrador do sistema.");
         },
         success: function (responseText) {
             alert(responseText);
-            window.location.href = "./planoAcaoCoordenador.jsp";
+            window.location.href = "./medicoes.jsp";
         }
     });
 }

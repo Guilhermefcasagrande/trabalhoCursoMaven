@@ -124,6 +124,18 @@
         <servlet-name>AdicionaMedServlet</servlet-name>
         <servlet-class>Controle.AdicionaMedServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListaMedServlet</servlet-name>
+        <servlet-class>Controle.ListaMedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluiMedServlet</servlet-name>
+        <servlet-class>Controle.ExcluiMedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraMedServlet</servlet-name>
+        <servlet-class>Controle.AlteraMedServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -247,6 +259,18 @@
     <servlet-mapping>
         <servlet-name>AdicionaMedServlet</servlet-name>
         <url-pattern>/AdicionaMedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaMedServlet</servlet-name>
+        <url-pattern>/ListaMedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiMedServlet</servlet-name>
+        <url-pattern>/ExcluiMedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraMedServlet</servlet-name>
+        <url-pattern>/AlteraMedServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
