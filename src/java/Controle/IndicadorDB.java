@@ -24,6 +24,8 @@ public class IndicadorDB {
     private Connection connection;
     private static String sqlInsere = "insert into indicadores (obj_codigo,descricao,situacao) values (?,?,?);";
     private static String sqlLista = "select * from indicadores order by ind_sequencia";
+    private static String sqlExclui = "delete from indicadores where ind_sequencia = ?;";
+    private static String sqlAltera = "update indicadores set obj_codigo = ?, descricao = ?, situacao = ? where ind_sequencia = ?";
     
     public IndicadorDB(){
         //this.connection = new ConexaoElephant().getConnection();
@@ -78,5 +80,50 @@ public class IndicadorDB {
         } finally {
             return lista;
         }
+    }
+    
+    public static boolean excluiIndicador(Indicador indicador) {
+        boolean excluiu = false;
+
+        try {
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, indicador.getIndSequencia());
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
+        }
+    }
+    
+    public static boolean alteraIndicador(Indicador indicador) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setInt(1, indicador.getObjCodigo());
+            pstmt.setString(2, indicador.getDescricao());
+            pstmt.setString(3, indicador.getSituacao());
+            pstmt.setInt(4, indicador.getIndSequencia());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
+        }
+
     }
 }

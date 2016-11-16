@@ -25,6 +25,8 @@ public class PeriodoDB {
     private Connection connection;
     private static String sqlInsere = "insert into periodo (descricao) values (?);";
     private static String sqlLista = "select * from periodo order by per_ano";
+    private static String sqlExclui = "delete from periodo where per_ano = ?;";
+    private static String sqlAltera = "update periodo set descricao = ? where per_ano = ?";
 
     public PeriodoDB() {
         //this.connection = new ConexaoElephant().getConnection();
@@ -73,5 +75,48 @@ public class PeriodoDB {
         } finally {
             return lista;
         }
+    }
+    
+    public static boolean excluiPeriodo(Periodo periodo) {
+        boolean excluiu = false;
+
+        try {
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, periodo.getPerAno());
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
+        }
+    }
+    
+    public static boolean alteraPeriodo(Periodo periodo) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setString(1, periodo.getDescricao());
+            pstmt.setInt(2, periodo.getPerAno());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
+        }
+
     }
 }

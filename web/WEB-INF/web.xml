@@ -80,6 +80,38 @@
         <servlet-name>ListaPlnAcaoServlet</servlet-name>
         <servlet-class>Controle.ListaPlnAcaoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluiIndServlet</servlet-name>
+        <servlet-class>Controle.ExcluiIndServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraIndServlet</servlet-name>
+        <servlet-class>Controle.AlteraIndServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluiPerServlet</servlet-name>
+        <servlet-class>Controle.ExcluiPerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraPerServlet</servlet-name>
+        <servlet-class>Controle.AlteraPerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluiLocServlet</servlet-name>
+        <servlet-class>Controle.ExcluiLocServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraLocServlet</servlet-name>
+        <servlet-class>Controle.AlteraLocServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluiIndPerServlet</servlet-name>
+        <servlet-class>Controle.ExcluiIndPerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraIndPerServlet</servlet-name>
+        <servlet-class>Controle.AlteraIndPerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -159,6 +191,38 @@
     <servlet-mapping>
         <servlet-name>ListaPlnAcaoServlet</servlet-name>
         <url-pattern>/ListaPlnAcaoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiIndServlet</servlet-name>
+        <url-pattern>/ExcluiIndServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraIndServlet</servlet-name>
+        <url-pattern>/AlteraIndServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiPerServlet</servlet-name>
+        <url-pattern>/ExcluiPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraPerServlet</servlet-name>
+        <url-pattern>/AlteraPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiLocServlet</servlet-name>
+        <url-pattern>/ExcluiLocServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraLocServlet</servlet-name>
+        <url-pattern>/AlteraLocServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiIndPerServlet</servlet-name>
+        <url-pattern>/ExcluiIndPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraIndPerServlet</servlet-name>
+        <url-pattern>/AlteraIndPerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

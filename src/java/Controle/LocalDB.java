@@ -25,6 +25,8 @@ public class LocalDB {
     private Connection connection;
     private static String sqlInsere = "insert into local (descricao,tipo) values (?,?);";
     private static String sqlLista = "select * from local order by loc_codigo";
+    private static String sqlExclui = "delete from local where loc_codigo = ?;";
+    private static String sqlAltera = "update local set descricao = ?, tipo = ? where loc_codigo = ?";
 
     public LocalDB() {
         //this.connection = new ConexaoElephant().getConnection();
@@ -77,6 +79,49 @@ public class LocalDB {
             System.out.println("Erro de sql: " + e.getMessage());
         } finally {
             return lista;
+        }
+    }
+    
+    public static boolean excluiLocal(Local local) {
+        boolean excluiu = false;
+
+        try {
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, local.getLocCodigo());
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
+        }
+    }
+    
+    public static boolean alteraLocal(Local local) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setString(1, local.getDescricao());
+            pstmt.setString(2, local.getTipo());
+            pstmt.setInt(3, local.getLocCodigo());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
         }
     }
 }

@@ -52,8 +52,9 @@ function lista() {
                     itens += "<td>" + responseJson[key].descricao + "</td>";
                     itens += "<td>";
                     itens += "<div class=\"btn-group\">";
-                    itens += "<a class=\"btn btn-primary\" href=\"alteraObjetivo.jsp?objetivo=" + responseJson[key].objCodigo + "&descricao=" + responseJson[key].descricao + "&perspectiva=" + responseJson[key].prsCodigo + "\" ><i class=\"icon_plus_alt2\"></i></a>";
-                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].objCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-primary\" href=\"alteraIndPer.jsp?indicador=" + responseJson[key].indSequencia + "&objetivo=" + responseJson[key].objCodigo + "&periodo="
+                            + responseJson[key].perAno + "&meta=" + responseJson[key].meta + "&valor=" + responseJson[key].valor + "&descricao=" + responseJson[key].descricao + "\" ><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].indSequencia + "," + responseJson[key].objCodigo + "," + responseJson[key].perAno + ");\"><i class=\"icon_close_alt2\"></i></a>";
                     itens += "</div>";
                     itens += "</td>";
                     itens += "</tr>";
@@ -61,6 +62,47 @@ function lista() {
                 }
             }
             $("#result").html(itens);
+        }
+    });
+}
+
+function exclui(indicador, objetivo, periodo) {
+    $.ajax({
+        url: "ExcluiIndPerServlet",
+        type: "POST",
+        data: {
+            "indicador": indicador,
+            "objetivo": objetivo,
+            "periodo": periodo
+        },
+        error: function () {
+            alert("Não foi possível excluir o Indicador. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            lista();
+        }
+    });
+}
+
+function alteraIndPer(indicador, objetivo, periodo, meta, valor, descricao) {
+    $.ajax({
+        url: "AlteraIndPerServlet",
+        type: "POST",
+        data: {
+            "objetivo": objetivo,
+            "descricao": descricao,
+            "periodo": periodo,
+            "meta": meta,
+            "valor": valor,
+            "indicador": indicador
+        },
+        error: function () {
+            alert("Não foi possível alterar o Indicador. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            window.location.href = "./indicadorPeriodo.jsp";
         }
     });
 }

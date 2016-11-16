@@ -46,8 +46,8 @@ function lista() {
                     itens += "<td>" + responseJson[key].tipo + "</td>";
                     itens += "<td>";
                     itens += "<div class=\"btn-group\">";
-                    itens += "<a class=\"btn btn-primary\" href=\"alteraObjetivo.jsp?objetivo=" + responseJson[key].objCodigo + "&descricao=" + responseJson[key].descricao + "&perspectiva=" + responseJson[key].prsCodigo + "\" ><i class=\"icon_plus_alt2\"></i></a>";
-                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].objCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-primary\" href=\"alteraLocal.jsp?codigo=" + responseJson[key].locCodigo + "&descricao=" + responseJson[key].descricao + "&tipo=" + responseJson[key].tipo + "\" ><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].locCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
                     itens += "</div>";
                     itens += "</td>";
                     itens += "</tr>";
@@ -55,6 +55,42 @@ function lista() {
                 }
             }
             $("#result").html(itens);
+        }
+    });
+}
+
+function exclui(local) {
+    $.ajax({
+        url: "ExcluiLocServlet",
+        type: "POST",
+        data: {
+            "locCodigo": local
+        },
+        error: function () {
+            alert("Não foi possível excluir o Local. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            lista();
+        }
+    });
+}
+
+function alteraLoc(locCodigo, descricao, tipo) {
+    $.ajax({
+        url: "AlteraLocServlet",
+        type: "POST",
+        data: {
+            "locCodigo": locCodigo,
+            "descricao": descricao,
+            "tipo": tipo
+        },
+        error: function () {
+            alert("Não foi possível alterar o Objetivo. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            window.location.href = "./local.jsp";
         }
     });
 }

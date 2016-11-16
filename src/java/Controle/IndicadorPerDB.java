@@ -25,6 +25,8 @@ public class IndicadorPerDB {
     private Connection connection;
     private static String sqlInsere = "insert into ind_per (ind_sequencia,obj_codigo,per_ano,meta,valor,descricao) values (?,?,?,?,?,?);";
     private static String sqlLista = "select * from ind_per order by obj_codigo";
+    private static String sqlExclui = "delete from ind_per where ind_sequencia = ? and obj_codigo = ? and per_ano = ?;";
+    private static String sqlAltera = "update ind_per set meta = ?, valor = ?, descricao = ? where ind_sequencia = ? and obj_codigo = ? and per_ano = ?";
 
     public IndicadorPerDB() {
         //this.connection = new ConexaoElephant().getConnection();
@@ -53,7 +55,7 @@ public class IndicadorPerDB {
             return inseriu;
         }
     }
-    
+
     public static ArrayList<IndPer> listaIndPer() {
         ArrayList<IndPer> lista = new ArrayList<IndPer>();
         try {
@@ -77,7 +79,7 @@ public class IndicadorPerDB {
                 indPer.setMeta(meta);
                 indPer.setValor(valor);
                 indPer.setDescricao(descricao);
-                
+
                 lista.add(indPer);
             }
             ConexaoPostgres.fechaConexao(conexao);
@@ -86,5 +88,54 @@ public class IndicadorPerDB {
         } finally {
             return lista;
         }
+    }
+
+    public static boolean excluiIndPer(IndPer indPer) {
+        boolean excluiu = false;
+
+        try {
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, indPer.getIndSequencia());
+            pstmt.setInt(2, indPer.getObjCodigo());
+            pstmt.setInt(3, indPer.getPerAno());
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
+        }
+    }
+
+    public static boolean alteraIndPer(IndPer indPer) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setString(1, indPer.getMeta());
+            pstmt.setString(2, indPer.getValor());
+            pstmt.setString(3, indPer.getDescricao());
+            pstmt.setInt(4, indPer.getIndSequencia());
+            pstmt.setInt(5, indPer.getObjCodigo());
+            pstmt.setInt(6, indPer.getPerAno());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
+        }
+
     }
 }
