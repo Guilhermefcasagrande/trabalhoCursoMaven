@@ -75,6 +75,7 @@
                             <li><a class="" href="indicadorPeriodo.jsp">Indicadores por Período</a></li>
                             <li><a class="" href="periodo.jsp">Período</a></li>
                             <li><a class="" href="local.jsp">Local</a></li>
+                            <li><a class="" href="medicoes.jsp">Acompanhamento</a></li>
                             <!--<li><a class="" href="dimensoes.jsp">Dimensões/Eixo</a></li>-->
                         </ul>
                     </li>

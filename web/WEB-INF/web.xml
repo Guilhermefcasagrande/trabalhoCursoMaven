@@ -120,6 +120,10 @@
         <servlet-name>AlteraPlanoAcServlet</servlet-name>
         <servlet-class>Controle.AlteraPlanoAcServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdicionaMedServlet</servlet-name>
+        <servlet-class>Controle.AdicionaMedServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>AlteraPlanoAcServlet</servlet-name>
         <url-pattern>/AlteraPlanoAcServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaMedServlet</servlet-name>
+        <url-pattern>/AdicionaMedServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

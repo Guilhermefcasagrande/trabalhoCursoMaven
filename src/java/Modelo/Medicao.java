@@ -19,16 +19,6 @@ public class Medicao {
     private String valor;
     private String descricao;
 
-    public Medicao(int plnSequencia, int locCodigo, int indSequencia, int objCodigo, int perAno, String valor, String descricao) {
-        this.plnSequencia = plnSequencia;
-        this.locCodigo = locCodigo;
-        this.indSequencia = indSequencia;
-        this.objCodigo = objCodigo;
-        this.perAno = perAno;
-        this.valor = valor;
-        this.descricao = descricao;
-    }
-
     public int getPlnSequencia() {
         return plnSequencia;
     }
