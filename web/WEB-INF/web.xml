@@ -112,6 +112,14 @@
         <servlet-name>AlteraIndPerServlet</servlet-name>
         <servlet-class>Controle.AlteraIndPerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluiPlanAcServlet</servlet-name>
+        <servlet-class>Controle.ExcluiPlanAcServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlteraPlanoAcServlet</servlet-name>
+        <servlet-class>Controle.AlteraPlanoAcServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>AlteraIndPerServlet</servlet-name>
         <url-pattern>/AlteraIndPerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluiPlanAcServlet</servlet-name>
+        <url-pattern>/ExcluiPlanAcServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlteraPlanoAcServlet</servlet-name>
+        <url-pattern>/AlteraPlanoAcServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

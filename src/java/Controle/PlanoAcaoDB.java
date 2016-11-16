@@ -25,6 +25,8 @@ public class PlanoAcaoDB {
     private Connection connection;
     private static String sqlInsere = "insert into plano_acao (ind_sequencia,obj_codigo,per_ano,loc_codigo,descricao,meta,prazo,situacao) values (?,?,?,?,?,?,?,?);";
     private static String sqlLista = "select * from plano_acao order by pln_sequencia";
+    private static String sqlExclui = "delete from plano_acao where pln_sequencia = ?;";
+    private static String sqlAltera = "update plano_acao set loc_codigo = ?,descricao = ?, meta = ?, prazo = ?, situacao = ? where pln_sequencia = ?";
 
     public PlanoAcaoDB() {
         //this.connection = new ConexaoElephant().getConnection();
@@ -77,7 +79,7 @@ public class PlanoAcaoDB {
                 String situacao = rs.getString("situacao");
 
                 PlanoAcao plano = new PlanoAcao();
-                
+
                 plano.setPlnSequencia(plnSequencia);
                 plano.setLocCodigo(locCodigo);
                 plano.setIndSequencia(indSequencia);
@@ -96,5 +98,53 @@ public class PlanoAcaoDB {
         } finally {
             return lista;
         }
+    }
+
+    public static boolean excluiPlanoAcao(PlanoAcao plana) {
+        boolean excluiu = false;
+
+        try {
+            //Connection conexao = ConexaoElephant.getConnection();
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlExclui);
+            pstmt.setInt(1, plana.getPlnSequencia());
+            
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                excluiu = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQL " + erro.getMessage());
+        } finally {
+            return excluiu;
+        }
+    }
+    
+    public static boolean alteraPlanoAcao(PlanoAcao plana) {
+        boolean alterou = false;
+
+        try {
+            Connection conexao = ConexaoPostgres.getConnection();
+            PreparedStatement pstmt = conexao.prepareStatement(sqlAltera);
+
+            pstmt.setInt(1, plana.getLocCodigo());
+            pstmt.setString(2, plana.getDescricao());
+            pstmt.setString(3, plana.getMeta());
+            pstmt.setString(4, plana.getPrazo());
+            pstmt.setString(5, plana.getSituacao());
+            pstmt.setInt(6, plana.getPlnSequencia());
+
+            int valor = pstmt.executeUpdate();
+            if (valor == 1) {
+                alterou = true;
+            }
+            ConexaoPostgres.fechaConexao(conexao);
+        } catch (SQLException erro) {
+            System.out.println("Erro de SQl " + erro.getMessage());
+        } finally {
+            return alterou;
+        }
+
     }
 }

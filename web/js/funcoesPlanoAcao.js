@@ -58,8 +58,9 @@ function lista() {
                     itens += "<td>" + responseJson[key].situacao + "</td>";
                     itens += "<td>";
                     itens += "<div class=\"btn-group\">";
-                    itens += "<a class=\"btn btn-primary\" href=\"alteraObjetivo.jsp?objetivo=" + responseJson[key].objCodigo + "&descricao=" + responseJson[key].descricao + "&perspectiva=" + responseJson[key].prsCodigo + "\" ><i class=\"icon_plus_alt2\"></i></a>";
-                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].objCodigo + ");\"><i class=\"icon_close_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-primary\" href=\"alteraPlanoAc.jsp?local=" + responseJson[key].locCodigo + "&descricao=" + responseJson[key].descricao + "&meta=" + responseJson[key].meta +
+                            "&prazo=" + responseJson[key].prazo + "&situacao=" + responseJson[key].situacao + "&plano=" + responseJson[key].plnSequencia + "\" ><i class=\"icon_plus_alt2\"></i></a>";
+                    itens += "<a class=\"btn btn-danger\" href=\"#\" onclick=\"exclui(" + responseJson[key].plnSequencia + ");\"><i class=\"icon_close_alt2\"></i></a>";
                     itens += "</div>";
                     itens += "</td>";
                     itens += "</tr>";
@@ -67,6 +68,45 @@ function lista() {
                 }
             }
             $("#result").html(itens);
+        }
+    });
+}
+
+function exclui(plano) {
+    $.ajax({
+        url: "ExcluiPlanAcServlet",
+        type: "POST",
+        data: {
+            "planoAcao": plano
+        },
+        error: function () {
+            alert("Não foi possível excluir o Plano de Ação. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            lista();
+        }
+    });
+}
+
+function alteraPlanoAc(local, descricao, meta, prazo, situacao, plano) {
+    $.ajax({
+        url: "AlteraPlanoAcServlet",
+        type: "POST",
+        data: {
+            "local": local,
+            "descricao": descricao,
+            "meta": meta,
+            "prazo": prazo,
+            "situacao": situacao,
+            "plano": plano
+        },
+        error: function () {
+            alert("Não foi possível alterar o Plano de Ação. Contate o Administrador do sistema.");
+        },
+        success: function (responseText) {
+            alert(responseText);
+            window.location.href = "./planoAcaoCoordenador.jsp";
         }
     });
 }
