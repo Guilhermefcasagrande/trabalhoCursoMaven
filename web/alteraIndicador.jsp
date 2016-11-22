@@ -4,6 +4,9 @@
     Author     : Guilherme
 --%>
 
+<%@page import="Controle.ObjetivoDB"%>
+<%@page import="Modelo.Objetivo"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,7 @@
     <body>
         <jsp:include page="/header.jsp" />
         <jsp:include page="/menuLateral.jsp" />
-         <%
+        <%
             int objetivo = Integer.parseInt(request.getParameter("objetivo"));
             int indicador = Integer.parseInt(request.getParameter("indicador"));
             String descricao = request.getParameter("descricao");
@@ -86,7 +89,17 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Objetivo</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="objetivo" class="form-control" id="id_objetivo" value="<%=objetivo%>">
+                                        <select class="form-control m-bot15" name="objetivo" id="id_objetivo">
+                                            <%
+                                                ArrayList<Objetivo> lista = new ArrayList();
+                                                lista = ObjetivoDB.listaObjetivo();
+
+                                                for (int i = 0; i < lista.size(); i++) {
+                                                    Objetivo obj = lista.get(i);
+                                                    out.println("<option value=" + obj.getObjCodigo() + ">" + obj.getDescricao() + "</option>");
+                                                }
+                                            %>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

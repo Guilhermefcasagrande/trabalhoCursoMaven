@@ -68,7 +68,8 @@
                                     <div class="col-lg-10">
                                         <input type="text" name="descricao" class="form-control" id="id_codigo" value="<%=codigo%>" disabled>
                                     </div>
-
+                                </div>
+                                <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descrição</label>
                                     <div class="col-lg-10">
                                         <input type="text" name="descricao" class="form-control" id="id_descricao" value="<%=descricao%>">

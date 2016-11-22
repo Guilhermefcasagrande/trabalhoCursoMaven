@@ -4,6 +4,9 @@
     Author     : Guilherme
 --%>
 
+<%@page import="Controle.PerspectivaDB"%>
+<%@page import="Modelo.Perspectiva"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -66,7 +69,17 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Perspectiva</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="perspectiva" class="form-control" id="id_perspectiva" placeholder="Perspectiva">
+                                        <select class="form-control m-bot15" name="perspectiva" id="id_perspectiva">
+                                            <%
+                                                ArrayList<Perspectiva> lista = new ArrayList();
+                                                lista = PerspectivaDB.listaPerspectiva();
+
+                                                for (int i = 0; i < lista.size(); i++) {
+                                                    Perspectiva persp = lista.get(i);
+                                                    out.println("<option value=" + persp.getPrsCodigo() + ">" + persp.getDescricao() + "</option>");
+                                                }
+                                            %>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -77,7 +90,7 @@
                             </form>
                         </div>
                     </section>
-                    
+
                     <div class="row">
                         <div class="col-lg-12">
                             <section class="panel">
@@ -110,7 +123,7 @@
         <!-- javascripts -->
 
         <script type="text/javascript">
-            
+
         </script>
         <script src="js/funcoesObjetivos.js"></script>
         <script src="js/jquery.js"></script>

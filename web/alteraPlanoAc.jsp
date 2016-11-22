@@ -53,7 +53,7 @@
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="index.jsp">Home</a></li>
                                 <li><i class="fa fa-bars"></i>Planos de Ação</li>
-                                <li><i class="fa fa-square-o"></i>Plano de ação</li>
+                                <li><i class="fa fa-square-o"></i>Alterar Plano de ação</li>
                             </ol>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     <!-- início-->
                     <section class="panel">
                         <header class="panel-heading">
-                            Cadastrar Plano de Ação
+                            Alterar Plano de Ação
                         </header>
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" id="form">

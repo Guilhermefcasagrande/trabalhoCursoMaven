@@ -34,7 +34,6 @@ function lista() {
             alert("Erro de Listagem");
         },
         success: function (responseJson) {
-            var teste = document.getElementById('result');
             var itens = "";
             for (var key in responseJson) {
                 if (responseJson.hasOwnProperty(key)) {
@@ -57,6 +56,7 @@ function lista() {
         }
     });
 }
+window.onload = lista();
 
 function exclui(objetivo) {
     $.ajax({
@@ -93,5 +93,4 @@ function alteraObj(objetivo, descricao, perspectiva) {
         }
     });
 }
-window.onload = lista();
 

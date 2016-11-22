@@ -136,6 +136,10 @@
         <servlet-name>AlteraMedServlet</servlet-name>
         <servlet-class>Controle.AlteraMedServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscaPerspectiva</servlet-name>
+        <servlet-class>Servlets.BuscaPerspectiva</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdicionaPerspectivaServlet</servlet-name>
         <url-pattern>/AdicionaPerspectivaServlet/*</url-pattern>
@@ -271,6 +275,10 @@
     <servlet-mapping>
         <servlet-name>AlteraMedServlet</servlet-name>
         <url-pattern>/AlteraMedServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaPerspectiva</servlet-name>
+        <url-pattern>/BuscaPerspectiva</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

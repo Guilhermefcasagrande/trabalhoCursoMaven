@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Prazo</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="prazo" class="form-control" id="id_prazo" placeholder="Prazo">
+                                        <input type="date" name="prazo" class="form-control" id="id_prazo" placeholder="Prazo">
                                     </div>
                                 </div>
 
