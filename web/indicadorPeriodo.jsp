@@ -4,6 +4,9 @@
     Author     : Guilherme
 --%>
 
+<%@page import="Controle.PeriodoDB"%>
+<%@page import="Modelo.Periodo"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -59,21 +62,31 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Indicador</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control m-bot15" name="indicador" id="id_indicador"></select>
+                                        <input type="text" name="indicador" class="form-control" id="id_indicador" placeholder="Indicador">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Objetivo</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control m-bot15" name="objetivo" id="id_objetivo"></select>
+                                        <input type="text" name="objetivo" class="form-control" id="id_objetivo" placeholder="Objetivo">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Período</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="periodo" class="form-control" id="id_periodo" placeholder="Período">
+                                        <select class="form-control m-bot15" name="periodo" id="id_periodo">
+                                            <%
+                                                ArrayList<Periodo> lista = new ArrayList();
+                                                lista = PeriodoDB.listaPeriodo();
+
+                                                for (int i = 0; i < lista.size(); i++) {
+                                                    Periodo per = lista.get(i);
+                                                    out.println("<option value=" + per.getPerAno() + ">" + per.getDescricao() + "</option>");
+                                                }
+                                            %>
+                                        </select>
                                     </div>
                                 </div>
 

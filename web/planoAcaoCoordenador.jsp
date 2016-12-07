@@ -4,6 +4,9 @@
     Author     : Guilherme
 --%>
 
+<%@page import="Controle.LocalDB"%>
+<%@page import="Modelo.Local"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -81,7 +84,17 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Local</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="local" class="form-control" id="id_local" placeholder="Local">
+                                        <select class="form-control m-bot15" name="local" id="id_local">
+                                            <%
+                                                ArrayList<Local> lista = new ArrayList();
+                                                lista = LocalDB.listaLocal();
+
+                                                for (int i = 0; i < lista.size(); i++) {
+                                                    Local loc = lista.get(i);
+                                                    out.println("<option value=" + loc.getLocCodigo() + ">" + loc.getDescricao() + "</option>");
+                                                }
+                                            %>
+                                        </select>
                                     </div>
                                 </div>
 
