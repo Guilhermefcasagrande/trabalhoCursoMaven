@@ -17,15 +17,10 @@
 
         <title>Perspectivas</title>
 
-        <!-- Bootstrap CSS -->    
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- bootstrap theme -->
         <link href="css/bootstrap-theme.css" rel="stylesheet">
-        <!--external css-->
-        <!-- font icon -->
         <link href="css/elegant-icons-style.css" rel="stylesheet" />
         <link href="css/font-awesome.min.css" rel="stylesheet" />
-        <!-- Custom styles -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/style-responsive.css" rel="stylesheet" />
 
@@ -91,15 +86,11 @@
         </section>
 
         <!-- javascripts -->
-        <script type="text/javascript">
-
-        </script>
         <script src="js/jquery.js"></script>
         <script src="js/funcoes.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery-1.8.3.min.js"></script>
-        <!-- nice scroll -->    
-        <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
         <script src="js/scripts.js"></script>
     </body>
 </html>
