@@ -59,14 +59,14 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Indicador</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="indicador" class="form-control" id="id_indicador" placeholder="Indicador">
+                                        <select class="form-control m-bot15" name="indicador" id="id_indicador"></select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Objetivo</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="objetivo" class="form-control" id="id_objetivo" placeholder="Objetivo">
+                                        <select class="form-control m-bot15" name="objetivo" id="id_objetivo"></select>
                                     </div>
                                 </div>
 

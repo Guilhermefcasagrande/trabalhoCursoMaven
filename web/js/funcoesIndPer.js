@@ -27,6 +27,31 @@ $(document).ready(function () {
             }
         });
     });
+
+    function selectObInd() {
+        $.ajax({
+            url: "ListaIndicadorServlet",
+            type: "POST",
+            dataType: "json",
+            error: function () {
+                alert("Erro de Listagem");
+            },
+            success: function (responseJson) {
+                var teste = document.getElementById('result');
+                var itens1 = "";
+                var itens2 = "";
+                for (var key in responseJson) {
+                    if (responseJson.hasOwnProperty(key)) {
+
+                        itens1 += "<option value=" + responseJson[key].indSequencia + ">"+responseJson[key].descricao+"</option>";
+                        itens2 += "<option value=" + responseJson[key].objCodigo + ">"+responseJson[key].descricao+"</option>";
+                    }
+                }
+                $("#result").html(itens1);
+                $("#result").html(itens2);
+            }
+        });
+    }
 });
 
 function lista() {

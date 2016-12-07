@@ -23,7 +23,9 @@ import java.util.ArrayList;
 public class IndicadorDB {
     private Connection connection;
     private static String sqlInsere = "insert into indicadores (obj_codigo,descricao,situacao) values (?,?,?);";
-    private static String sqlLista = "select * from indicadores order by ind_sequencia";
+    private static String sqlLista = "select * from indicadores "
+            + "join objetivo obj"
+            + "order by ind_sequencia";
     private static String sqlExclui = "delete from indicadores where ind_sequencia = ?;";
     private static String sqlAltera = "update indicadores set obj_codigo = ?, descricao = ?, situacao = ? where ind_sequencia = ?";
     
